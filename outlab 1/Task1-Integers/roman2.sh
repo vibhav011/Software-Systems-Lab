@@ -1,3 +1,5 @@
+#! /bin/bash
+
 n=(100 90 50 40 10 9 5 4 1)
 c=('C' 'XC' 'L' 'XL' 'X' 'IX' 'V' 'IV' 'I')
 
@@ -7,7 +9,7 @@ f(){
 	do
 		if [ $z -ge ${n[$i]} ]
 		then
-			echo "${c[$i]}\c"
+			echo -n "${c[$i]}"
 			z=$((z-${n[$i]}))
 			break
 		fi

@@ -1,3 +1,5 @@
+#! /bin/bash
+
 if ! [ $# -eq 3 ]
 then
 	echo "Usage: ./verifier.sh <source file> <testcases url> <cut-dirs arg>"

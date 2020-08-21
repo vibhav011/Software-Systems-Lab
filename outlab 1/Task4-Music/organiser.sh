@@ -1,3 +1,5 @@
+#! /bin/bash
+
 dir=$(pwd)
 songs="$dir/songs"
 mkdir "$dir/albums"

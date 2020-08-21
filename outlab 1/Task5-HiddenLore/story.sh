@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # Try to make the code faster, it takes around 7s
 f(){
 	for file in $(ls $1)

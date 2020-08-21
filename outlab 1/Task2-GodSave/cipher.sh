@@ -1,3 +1,5 @@
+#! /bin/bash
+
 if [ $# != 1 ]
 then
 	echo "Usage: ./cipher.sh <url>"

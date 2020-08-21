@@ -6,12 +6,13 @@ then
 	exit 1
 fi
 
-wget -q $1 -O ./encrypted.txt
+file=./encrypted.txt
+dest=./deciphered.txt
 
-file="encrypted.txt"
+wget -q $1 -O $file
 
 m=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
-n=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+n=$( echo $m | tr a-z A-Z )
 
 rot=0
 words=('Queen' 'Majesty')
@@ -28,9 +29,8 @@ do
 	done
 done
 
-dest=./deciphered.txt
-var=$(cat encrypted.txt | tr "$m" "${m:$rot}${m:0:$rot}" | tr "$n" "${n:$rot}${n:0:$rot}")
+var=$(cat $file | tr "$m" "${m:$rot}${m:0:$rot}" | tr "$n" "${n:$rot}${n:0:$rot}")
 printf "%s" "$var" > "$dest"
 
-echo "PS. Give me the names." | tr "${m:$rot}${m:0:$rot}" "$m" | tr "${n:$rot}${n:0:$rot}" "$n" >> encrypted.txt
+echo "PS. Give me the names." | tr "${m:$rot}${m:0:$rot}" "$m" | tr "${n:$rot}${n:0:$rot}" "$n" >> $file
 

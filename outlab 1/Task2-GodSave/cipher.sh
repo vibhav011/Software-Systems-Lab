@@ -9,28 +9,28 @@ fi
 wget -q $1 -O ./encrypted.txt
 
 file="encrypted.txt"
-s=zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba
-l=ZYXWVUTSRQPONMLKJIHGFEDCBAZYXWVUTSRQPONMLKJIHGFEDCBA
+
 m=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
 n=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 rot=0
-for i in {0..26}
+words=('Queen' 'Majesty')
+
+for i in {0..25}
 do
-	if grep -qi "Queen" <<< $(cat "$file" | tail -2 | tr "${s:0:26}" "${s:${i}:26}" | tr "${l:0:26}" "${l:${i}:26}");
-	then
-		rot=$i
-		break
-	fi
-	if grep -qi "Majesty" <<< $(cat "$file" | tail -2 | tr "${s:0:26}" "${s:${i}:26}" | tr "${l:0:26}" "${l:${i}:26}");
-	then
-		rot=$i
-		break
-	fi
+	for word in $words
+	do
+		if grep -qi "$word" <<< $(cat "$file" | tail -1 | tr "$m" "${m:$i}${m:0:$i}" | tr "$n" "${n:$i}${n:0:$i}");
+		then
+			rot=$i
+			break
+		fi
+	done
 done
 
 dest=./deciphered.txt
-var=$(cat encrypted.txt | tr "${s:0:26}" "${s:17:26}" | tr "${l:0:26}" "${l:17:26}")
+var=$(cat encrypted.txt | tr "$m" "${m:$rot}${m:0:$rot}" | tr "$n" "${n:$rot}${n:0:$rot}")
 printf "%s" "$var" > "$dest"
 
-echo "PS. Give me the names." | tr "${m:0:26}" "${m:${rot}:26}" | tr "${n:0:26}" "${n:${rot}:26}" >> encrypted.txt
+echo "PS. Give me the names." | tr "${m:$rot}${m:0:$rot}" "$m" | tr "${n:$rot}${n:0:$rot}" "$n" >> encrypted.txt
+

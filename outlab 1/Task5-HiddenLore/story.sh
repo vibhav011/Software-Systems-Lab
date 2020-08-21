@@ -1,28 +1,29 @@
 #! /bin/bash
 
-# Try to make the code faster, it takes around 7s
-f(){
-	for file in $(ls $1)
-	do
-		if [ $(cat $1/${file} | head -2 | tail -1) -eq $2 ]
-		then
-			if [ $4 -eq 1 ]
-			then
-				echo $(cat $1/${file} | head -1) > $3
-			else
-				echo $(cat $1/${file} | head -1) >> $3
-			fi
-			next=$(cat $1/${file} | tail -1)
-			cnt=$(($4+1))
-			f $1 $next $3 $cnt
-			break
-		fi
-	done
-}
-
 dir=$1
 next=$2
 out=$3
-cnt=1
 
-f $dir $next $out $cnt
+files=($( grep -Hl "^$next$" $dir/* ))
+echo $(cat ${files[0]} | head -1) > $out
+next=$(cat ${files[0]} | tail -1)
+cur=${files[0]}
+
+files=($( grep -Hl "^$next$" $dir/* ))
+
+while [ ${#files[@]} -eq 2 ]
+do
+	for i in 0 1
+	do
+		file=${files[$i]}
+		if [[ $file != $cur ]]
+		then
+			echo $(cat $file | head -1) >> $out
+			next=$(cat $file | tail -1)
+			cur=$file
+			break
+		fi
+	done
+	files=($( grep -Hl "^$next$" $dir/* ))
+done
+

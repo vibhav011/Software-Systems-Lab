@@ -1,34 +1,23 @@
-# Reduce number of chars for bonus
-a(){
-	if [ $1 = 0 ]
-	then 
-		echo
-	elif [ $1 -ge 100 ]
-	then 
-		echo C$(a $(($1-100)))
-	elif [ $1 -ge 90 ]
-	then 
-		echo XC$(a $(($1-90)))
-	elif [ $1 -ge 50 ]
+#! /bin/bash
+
+n=(100 90 50 40 10 9 5 4 1)
+c=('C' 'XC' 'L' 'XL' 'X' 'IX' 'V' 'IV' 'I')
+
+f(){
+	z=$1
+	for i in {0..8}
+	do
+		if [ $z -ge ${n[$i]} ]
+		then
+			echo -n "${c[$i]}"
+			z=$((z-${n[$i]}))
+			break
+		fi
+	done
+	if [ $z -gt 0 ]
 	then
-		echo L$(a $(($1-50)))
-	elif [ $1 -ge 40 ]
-	then
-		echo XL$(a $(($1-40)))
-	elif [ $1 -ge 10 ]
-	then
-		echo X$(a $(($1-10)))
-	elif [ $1 = 9 ]
-	then
-		echo IX
-	elif [ $1 -ge 5 ]
-	then
-		echo V$(a $(($1-5)))
-	elif [ $1 = 4 ]
-	then
-		echo IV
-	else
-		echo I$(a $(($1-1)))
+		f $z
 	fi
 }
-a $1
+f $1
+echo

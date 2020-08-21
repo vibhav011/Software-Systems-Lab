@@ -20,13 +20,13 @@ a(){
 		echo X$(a $(($1-10)))
 	elif [ $1 = 9 ]
 	then
-		echo IX$(a $(($1-9)))
+		echo IX
 	elif [ $1 -ge 5 ]
 	then
 		echo V$(a $(($1-5)))
 	elif [ $1 = 4 ]
 	then
-		echo IV$(a $(($1-4)))
+		echo IV
 	else
 		echo I$(a $(($1-1)))
 	fi

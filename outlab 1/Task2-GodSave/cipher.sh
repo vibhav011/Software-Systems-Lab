@@ -21,7 +21,7 @@ for i in {0..25}
 do
 	for word in $words
 	do
-		if grep -qi "$word" <<< $(cat "$file" | tail -1 | tr "$m" "${m:$i}${m:0:$i}" | tr "$n" "${n:$i}${n:0:$i}");
+		if grep -qi "$word" <<< $(cat "$file" | tail -2 | tr "$m" "${m:$i}${m:0:$i}" | tr "$n" "${n:$i}${n:0:$i}");
 		then
 			rot=$i
 			break

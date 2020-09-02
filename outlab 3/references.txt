@@ -1,0 +1,5 @@
+Argparse:
+	https://docs.python.org/3/library/argparse.html
+	https://realpython.com/command-line-interfaces-python-argparse/
+	https://stackoverflow.com/questions/20828277/what-is-a-namespace-object
+

@@ -49,3 +49,4 @@ if corrupted:
 else:
 	print("OK")
 
+inpFile.close()

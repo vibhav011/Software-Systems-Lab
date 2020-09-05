@@ -20,7 +20,7 @@ class Node(object):
 	def __eq__(self, other):
 		if self.left is None and self.right is None:
 			return other.left is None and other.right is None
-		elif self.left is None and self.right is None:
+		elif other.left is None and other.right is None:
 			return False
 		else:
 			return self.left == other.left and self.right == other.right

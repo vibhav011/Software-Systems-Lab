@@ -51,10 +51,12 @@ def allSymTrees(n):
 		return []
 	trees = allTrees(n//2)
 	mirrors = [mirrorTree(tree) for tree in trees]
-	final = [Node(tree, mirror) for tree in trees for mirror in mirrors]
+	final = [Node(trees[i], mirrors[i]) for i in range(len(trees))]
 	return final
 
 
 if __name__ == '__main__':
 	x = allSymTrees(int(input()))
+	for y in x:
+		print(y)
 	node = Node(Node(Node(), Node()), Node())

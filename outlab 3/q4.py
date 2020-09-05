@@ -28,7 +28,7 @@ class Node(object):
 
 def mirrorTree(node):
 	if node.left is None:
-		return node
+		return Node()
 	left = mirrorTree(node.left)
 	right = mirrorTree(node.right)
 	return Node(right, left)

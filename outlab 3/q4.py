@@ -29,10 +29,9 @@ class Node(object):
 def mirrorTree(node):
 	if node.left is None:
 		return node
-	mirrorTree(node.left)
-	mirrorTree(node.right)
-	node.left, node.right = node.right, node.left
-	return node
+	left = mirrorTree(node.left)
+	right = mirrorTree(node.right)
+	return Node(right, left)
 
 
 def allTrees(n):
@@ -48,13 +47,14 @@ def allTrees(n):
 
 
 def allSymTrees(n):
-	trees = allTrees(n)
-	final = [tree for tree in trees if tree == mirrorTree(tree)]
+	if n%2 == 0:
+		return []
+	trees = allTrees(n//2)
+	mirrors = [mirrorTree(tree) for tree in trees]
+	final = [Node(tree, mirror) for tree in trees for mirror in mirrors]
 	return final
 
 
 if __name__ == '__main__':
-	for x in allSymTrees(int(input())):
-		print(x)
+	x = allSymTrees(int(input()))
 	node = Node(Node(Node(), Node()), Node())
-	print(node)

@@ -30,13 +30,21 @@ for line in lines:
 
 		ans = RingInt(n, 0)
 		for i in range(0, len(aray1)) :
+			if aray1[i] < 0 or aray1[i] >= n:
+				corrupted = True
+				break
 			ans += RingInt(n, i+1) * RingInt(n, aray1[i])
+		
 		if ans.value != 0 :
 			corrupted = True
 			break
 
 		for i in range(0, len(aray2)) :
+			if aray2[i] < 0 or aray2[i] >= n:
+				corrupted = True
+				break
 			ans += RingInt(n, i+1) * RingInt(n, aray2[i])
+		
 		if ans.value != 0 :
 			corrupted = True
 			break

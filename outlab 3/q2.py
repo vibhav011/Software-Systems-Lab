@@ -1,5 +1,6 @@
 import argparse
 import os
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-in", "--input", required = True)
 parser.add_argument("-out", "--output", required = True)

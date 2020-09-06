@@ -63,7 +63,7 @@ class RingInt :
 			v = v//2
 
 		if reciproc:
-			return RingInt(self.characteristic, 1)/ans
+			return RingInt(self.characteristic, 1)/RingInt(self.characteristic, ans)
 		
 		return RingInt(self.characteristic, ans)
 

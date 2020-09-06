@@ -22,6 +22,9 @@ for line in lines:
 		if len(arrs) != 2:
 			continue
 
+		if arrs[0][0]+arrs[0][-1]+arrs[1][0]+arrs[1][-1] != "()()"
+			continue
+
 		try:							# checking if indeed the strings are of expected form
 			aray1 = list(map(int, arrs[0][1:-1].split(',')))	# aray1 stores [a1, a2, ..]
 			aray2 = list(map(int, arrs[1][1:-1].split(',')))	# aray2 stores [b1, b2, ..]

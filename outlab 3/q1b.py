@@ -14,6 +14,7 @@ corrupted = False
 
 for line in lines:
 	parts = line.split('$')
+	parts = parts[1:-1]
 	for part in parts:
 		if part.find('#') == -1:
 			continue
@@ -22,7 +23,7 @@ for line in lines:
 		if len(arrs) != 2:
 			continue
 
-		if arrs[0][0]+arrs[0][-1]+arrs[1][0]+arrs[1][-1] != "()()"
+		if arrs[0][0]+arrs[0][-1]+arrs[1][0]+arrs[1][-1] != "()()":
 			continue
 
 		try:							# checking if indeed the strings are of expected form

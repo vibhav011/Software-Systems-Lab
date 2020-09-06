@@ -1,4 +1,5 @@
 import argparse
+from collections import Counter
 
 my_parser = argparse.ArgumentParser()
 my_parser.add_argument('-ca', type=str, required=True)
@@ -12,12 +13,9 @@ child = open(args['ch'], 'r').readlines()
 M = int(cand[0])
 types = list(map(int, cand[1].split()))
 
-freq = {}						# dict to store frequency of each type in the shop
+freq = Counter()						# counter to store frequency of each type in the shop
 for cnd in types:
-	if cnd in freq.keys():
-		freq[cnd] += 1
-	else:
-		freq[cnd] = 1
+	freq[cnd] += 1
 
 N = int(child[0])
 

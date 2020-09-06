@@ -49,12 +49,12 @@ def s3(k, x, n):
 		return "UNDEFINED"
 
 my_parser = argparse.ArgumentParser()
-my_parser.add_argument('-in', type=str, required=True)
+my_parser.add_argument('-inp', type=str, required=True)
 my_parser.add_argument('-out', type=str, required=True)
 
 args = vars(my_parser.parse_args())
 
-inpFile = open(args['in'], 'r')
+inpFile = open(args['inp'], 'r')
 outFile = open(args['out'], 'w')
 lines = inpFile.readlines()
 

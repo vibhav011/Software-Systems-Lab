@@ -47,8 +47,11 @@ class RingInt :
 	def __pow__(self, v):
 		v = int(v)
 
-		if v < 1:
-			raise ValueError("Only positive values allowed.")
+		reciproc = False
+		
+		if v < 0:
+			v = -v
+			reciproc = True
 
 		ans = 1
 		x = self.value
@@ -58,6 +61,9 @@ class RingInt :
 
 			x = (x*x) % self.characteristic
 			v = v//2
+
+		if reciproc:
+			return RingInt(self.characteristic, 1)/ans
 		
 		return RingInt(self.characteristic, ans)
 

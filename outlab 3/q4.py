@@ -56,7 +56,5 @@ def allSymTrees(n):
 
 
 if __name__ == '__main__':
-	for x in allSymTrees(int(input())):
-		print(x)
-	node = Node(Node(Node(), Node()), Node())
-	print(node)
+	for i in range(13):
+		print(i, len(allTrees(i)))

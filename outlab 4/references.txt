@@ -6,3 +6,9 @@ nth Derivative:
 
 Surface Plots:
 	https://towardsdatascience.com/an-easy-introduction-to-3d-plotting-with-matplotlib-801561999725
+
+Linear Regression
+	https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html
+
+Requests Module
+	https://www.w3schools.com/python/module_requests.asp#:~:text=The%20requests%20module%20allows%20you,encoding%2C%20status%2C%20etc).

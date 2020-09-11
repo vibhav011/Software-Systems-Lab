@@ -1,2 +1,8 @@
 Reading/saving image:
 	https://note.nkmk.me/en/python-numpy-image-processing/
+
+nth Derivative:
+	https://docs.scipy.org/doc/scipy/reference/generated/scipy.misc.derivative.html
+
+Surface Plots:
+	https://towardsdatascience.com/an-easy-introduction-to-3d-plotting-with-matplotlib-801561999725

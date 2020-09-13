@@ -3,7 +3,7 @@ import numpy as np
 
 data = np.zeros((7, 4))
 
-with open('mumbai_data.csv') as csvfile:
+with open('./mumbai_data.csv') as csvfile:
 	file_object = csv.reader(csvfile)
 	file_object.__iter__().__next__()		# skips the header line
 	i = 0

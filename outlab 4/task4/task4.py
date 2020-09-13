@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import misc
+from mpl_toolkits.mplot3d import Axes3D
 
 def fn_plot1d(fn, x_min, x_max, filename):
 	x = np.linspace(x_min, x_max, 100)

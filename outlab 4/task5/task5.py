@@ -14,7 +14,7 @@ for i in range(len(data)):
 y = np.array([float(data[i][6])/float(data[i-1][6]) for i in range(loc, len(data))])
 x = np.arange(1, len(data)-loc+1)
 
-plt.plot(x, y, 'r', label="original data")
+plt.scatter(x, y, s = 15, c='red', label="original data")
 
 slope, intercept, a, b, c = stats.linregress(x, y)
 ans = int(np.ceil((1-intercept)/slope))

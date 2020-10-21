@@ -1,0 +1,5 @@
+Python sqlite3 db:
+	https://docs.python.org/3/library/sqlite3.html
+
+Inserting csv data to sqlite table:
+	https://www.kite.com/python/answers/how-to-insert-the-contents-of-a-csv-file-into-an-sqlite3-database-in-python

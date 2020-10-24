@@ -1,27 +1,17 @@
 import sqlite3
-from collections import defaultdict
 
 conn = sqlite3.connect('ipl.db')
-c = conn.cursor()
+with conn:
+    c = conn.cursor()
+    data = c.execute("""
 
-player_runs = c.execute('''SELECT PLAYER.player_id, PLAYER.player_name, BALL_BY_BALL.runs_scored
-						   FROM PLAYER
-						   INNER JOIN BALL_BY_BALL ON PLAYER.player_id=BALL_BY_BALL.striker''')
+        SELECT PLAYER.player_id, PLAYER.player_name, SUM(runs_scored = 6), COUNT(*)
+        FROM BALL_BY_BALL
+        INNER JOIN PLAYER on PLAYER.player_id = BALL_BY_BALL.striker
+        GROUP BY striker
+    """)
 
-player_dict = defaultdict(lambda: ['', 0, 0, 0.0])	# [name, balls_faced, num_sixes, fraction_of_sixes]
-
-for player in player_runs:
-	player_dict[player[0]][0] = player[1]
-	player_dict[player[0]][1] += 1
-	if player[2] == 6:
-		player_dict[player[0]][2] += 1
-
-for k, v in player_dict.items():
-	player_dict[k][3] = (1.0*v[2])/v[1]
-
-sorted_list = [(a, b, d, c, e) for a, [b, c, d, e] in sorted(player_dict.items(), key=lambda item: item[1][3], reverse=True)]
-
-for t, i in zip(sorted_list, range(20)):
-	print("%d,%s,%d,%d,%f" % (t[0], t[1], t[2], t[3], t[4]))
-
-conn.close()
+    final = [[x, y, z, w, z*1.0/w] for x, y, z, w in data]
+    final = sorted(final, key = lambda x : (-x[4], x[1]))
+    for player in final:
+        print("{},{},{},{},{}".format(*player))

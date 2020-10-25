@@ -26,7 +26,7 @@ c.execute('''CREATE TABLE MATCH
 				 city_name text,
 				 country_name text,
 				 toss_winner text,
-				 match_winner text,
+				 match_winner integer,
 				 toss_name text,
 				 win_type text,
 				 man_of_match integer,

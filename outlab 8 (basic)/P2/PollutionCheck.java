@@ -11,7 +11,7 @@ public class PollutionCheck
         File file1 = new File(args[0]);
         File file2 = new File(args[1]);
         File file3 = new File(args[2]);
-        System.out.println(file1);
+
         Scanner sc=null;
         try 
         {

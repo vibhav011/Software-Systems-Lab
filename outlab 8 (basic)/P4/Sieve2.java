@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.*;
+import java.lang.Math;
 
 public class Sieve2 {
 
@@ -9,15 +10,15 @@ public class Sieve2 {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 
-		cnt = IntStream.range(2,n+1);
-		sieve = IntStream.range(2,n+1);			// non zero means prime
+		cnt = IntStream.range(2,(int)Math.sqrt(n) + 2);
+		sieve = IntStream.range(2,n+1);
 		
 		cnt.map(x -> {
-			sieve = sieve.map(y -> y%x==0&&x!=y ? 0 : y);
+			sieve = sieve.filter(y -> y%x!=0 || y==x);
 			return x;
 		}).boxed().collect(Collectors.toList());
 		
-		sieve.filter(x -> x > 0).forEach(x -> System.out.print(x + " "));
+		sieve.forEach(x -> System.out.print(x + " "));
 		System.out.println();
 	}
 }

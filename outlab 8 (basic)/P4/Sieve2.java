@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.*;
 
-public class Sieve {
+public class Sieve2 {
 
 	public static IntStream cnt, sieve;
 

@@ -15,8 +15,8 @@ class ReaderWriter implements Runnable {
 	}
 
 	public void run() {
-		File file = new File(this.FILENAME);
 		try {
+			File file = new File(this.FILENAME);
 			Scanner sc = new Scanner(file);
 
 			while(sc.hasNextLine()) {

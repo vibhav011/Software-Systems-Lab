@@ -12,7 +12,7 @@ public class ProtectedTree {
 	final Lock lock = new ReentrantLock();
 	final Condition moreWrites  = lock.newCondition(); 
 
-	public void ProtectedTree(Tree t) {
+	public ProtectedTree(Tree t) {
 		this.tree = t;
 	}
 
@@ -37,6 +37,7 @@ public class ProtectedTree {
 				moreWrites.await();
 
 			answer = this.tree.read(value);
+
 			if (answer == value) {
 				System.out.println("RS");
 				reads++;

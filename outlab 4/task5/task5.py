@@ -11,7 +11,7 @@ for i in range(len(data)):
 		loc = i
 		break
 
-y = np.array([float(data[i][6])/float(data[i-1][6]) for i in range(loc, len(data))])
+y = np.array([float(data[i][7])/float(data[i-1][7]) for i in range(loc, len(data))])
 x = np.arange(1, len(data)-loc+1)
 
 plt.scatter(x, y, s = 15, c='red', label="original data")

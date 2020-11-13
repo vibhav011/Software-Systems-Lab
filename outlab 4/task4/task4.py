@@ -32,7 +32,7 @@ def fn_plot2d(fn, x_min, x_max, y_min, y_max, filename):
 
 def nth_derivative_plotter(fn, n, x_min, x_max, filename):
 	x = np.linspace(x_min, x_max, 100)
-	y = misc.derivative(fn, x, n=n)
+	y = misc.derivative(fn, x, n=n, dx = 1e-6)
 	plt.plot(x, y)
 	plt.xlabel('x')
 	plt.ylabel('f<'+str(n)+'>(x)')
@@ -51,7 +51,7 @@ def b(x):
 
 def sinc(x, y):
 	temp = np.sqrt(x**2+y**2)
-	return np.piecewise(temp, [temp > 0, temp == 0], [lambda x: np.sin(x), 1])
+	return np.piecewise(temp, [temp > 0, temp == 0], [lambda x: np.sin(x)/x, 1])
 
 fn_plot1d(b, -2, 2, 'fn1plot.png')
 fn_plot2d(sinc, -1.5*np.pi, 1.5*np.pi, -1.5*np.pi, 1.5*np.pi, "fn2plot.png")
